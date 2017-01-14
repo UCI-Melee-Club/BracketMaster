@@ -28,9 +28,13 @@
         <div class="cover-container">
           <div class="inner cover">
             <h1 class="cover-heading">Bracket Seeding</h1>
-            <p class="lead" id="description">Insert tags below. Make sure names are typed as they appear on ocsmash.weebly.com.</p>
+            <p class="lead" id="description">Insert tags below separated by commas. Make sure names are typed as they appear on ocsmash.weebly.com.</p>
             <p class="lead" id="databox">
-              <button class="btn btn-lg btn-default transp-button" id="calc-button" onclick="getCoordinates()" data-loading-text="Loading...">What's my elevation?</button>
+              <form>
+                <textarea class="form-control"></textarea>
+                <br>
+                <button class="btn btn-lg btn-default transp-button" id="calc-button" onclick="getCoordinates()" data-loading-text="Loading...">Calculate seeding</button>
+              </form>
             </p>
           </div>
 
