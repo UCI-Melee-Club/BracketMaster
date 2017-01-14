@@ -24,14 +24,16 @@
 			<div class="cover-container">
 				<div class="inner cover">
 					<h1 class="cover-heading">Bracket Seedings</h1>
-					<p class="lead" id="description">Insert tags below separated by a space. Make sure names are typed as they appear on ocsmash.weebly.com.</p>
+					<p class="lead" id="description">Insert tags below separated by commas. Make sure names are typed as they appear on ocsmash.weebly.com.</p>
 					<p class="lead" id="databox">
 						<form action="results.php" method="post">
 							<input type="text" name="challongeName" id="challongeName" class="form-control" placeholder="Challonge Name">
+                            <br>
+                            <input type="text" name="challongeURL" id="challongeURL" class="form-control" placeholder="Challonge URL">
 							<br>
 							<textarea name="tagList" id="tagList" class="form-control"></textarea>
 							<br>
-							<input type="submit" class="btn btn-lg btn-default transp-button" id="calc-button" data-loading-text="Loading..."></button>
+							<input type="submit" class="btn btn-lg btn-default transp-button" id="calc-button" placeholder="Tags go here!"></button>
 						</form>
 					</p>
 				</div>			  

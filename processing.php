@@ -1,6 +1,6 @@
 <?php
-	//include('challonge.class.php');
-	//date_default_timezone_set('America/Los_Angeles');
+	include('challonge.class.php');
+	date_default_timezone_set('America/Los_Angeles');
 
 	$html = file_get_contents('http://ocsmash.weebly.com/the-ladder-current.html');
 	$dom = new DOMDocument;
@@ -11,10 +11,9 @@
 
 	for ($i = 6; $i < $items->length; $i = 4 + $i){
 		$name = trim(strtolower((string)$items->item($i)->nodeValue));
-		$players[$name] = $items->item($i + 1)->nodeValue;
+		$players[$name] = floatval(trim($items->item($i + 1)->nodeValue));
 	}
 
-	$challongeName = $_POST['challongeName'];
 	$tagListString = strtolower($_POST['tagList']);
 	$tagList = explode(",", $tagListString);
 
@@ -26,32 +25,39 @@
 			$completedList[$i_tag] = $players[$i_tag];
 		}
 		else{
-			$completedList[$i_tag] = 0;
+			$completedList[$i_tag] = -1;
 		}
 	}
 	
 	//Sort by ranking
 	arsort($completedList);
-	var_dump($completedList);
 
-	
-	/*
 	//Send sorted list to challonge
-	$c = new ChallongeAPI(DpYyhqBBN7gJX0LFMx8kgggYh51IZkDUnnP8nJ2p);
+	$c = new ChallongeAPI('DpYyhqBBN7gJX0LFMx8kgggYh51IZkDUnnP8nJ2p');
 
-	$tourneyNum = $tournamentName[strlen($challongeName)-1] . $tournamentName[strlen($challongeName)-2];
-
-	$date = date('m/d/Y h:i:s a', time());
+	$challongeName = trim($_POST['challongeName']);
+	$challongeURL = trim($_POST['challongeURL']);
 
 	$params = array(
-  		"tournament[name]" => $challongeName,//fix this line lol
+  		"tournament[name]" => $challongeName,
   		"tournament[tournament_type]" => "double elimination",
-  		"tournament[url]" => "ZsmashBi" . $tourneyNum,
-  		"tournament[description]" => "Challonge api is pretty dope, also Alex and Bill are GOATS",
-  		"tournament[start_at]"  =>  $date
+  		"tournament[url]" => $challongeURL,
+  		"tournament[description]" => "Challonge api is pretty dope, also Alex and Bill are GOATS"
   	);
 	$tournament = $c->makeCall("tournaments", $params, "post");
 	$tournament = $c->createTournament($params);
-	*/
 
+	$i = 1;
+	while($smasher = current($completedList)){
+		$participantParams = array(
+			"participant[name]" => key($completedList),
+			"participant[seed]" => $i
+			);
+		$i++;
+		next($completedList);
+		$t = $c->makeCall("tournaments/" . $challongeURL . "/participants", $participantParams, "post");
+		$t = $c->createParticipant($challongeURL, $participantParams);
+	}
+
+	echo "<p>Visit the created bracket at: <a href='https://www.challonge.com/$challongeURL'>$challongeURL.</a></p>";
 ?>
