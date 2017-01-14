@@ -31,6 +31,9 @@
 	
 	//Sort by ranking
 	arsort($completedList);
+	
+	//t5Y2koyIeFsxF5HamF5lkkFaWJL5MdP32bqeWgPh
+	//DpYyhqBBN7gJX0LFMx8kgggYh51IZkDUnnP8nJ2p
 
 	//Send sorted list to challonge
 	$c = new ChallongeAPI('DpYyhqBBN7gJX0LFMx8kgggYh51IZkDUnnP8nJ2p');
