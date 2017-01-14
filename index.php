@@ -17,32 +17,34 @@
     <link href="css/custom.css" rel="stylesheet">
 
   </head>
-
-  <body>
+	<?php $i = 0; ?>
+  <body class="container-fluid">
     <div class="site-wrapper">
-      <div class="site-wrapper-inner">
-        <div class="cover-container">
-          <div class="inner cover">
-            <h1 class="cover-heading">Bracket Seedings</h1>
-            <p class="lead" id="description">Insert tags below separated by a space. Make sure names are typed as they appear on ocsmash.weebly.com.</p>
-            <p class="lead" id="databox">
-              <form action="results.php" method="post">
-                <textarea name="tagList" id="tagList" class="form-control"></textarea>
-                <br>
-                <button class="btn btn-lg btn-default transp-button" id="calc-button" data-loading-text="Loading...">Calculate seeding</button>
-              </form>
-            </p>
-          </div>
-
-          <div class="mastfoot">
-            <div class="inner">
-              <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-            </div>
-          </div>
+		<div class="site-wrapper-inner">
+			<div class="cover-container">
+				<div class="inner cover">
+					<h1 class="cover-heading">Bracket Seedings</h1>
+					<p class="lead" id="description">Insert tags below separated by a space. Make sure names are typed as they appear on ocsmash.weebly.com.</p>
+					<p class="lead" id="databox">
+						<form action="results.php" method="post">
+							<input type="text" name="challongeName" id="challongeName" class="form-control" placeholder="Challonge Name">
+							<br>
+							<textarea name="tagList" id="tagList" class="form-control"></textarea>
+							<br>
+							<input type="submit" class="btn btn-lg btn-default transp-button" id="calc-button" data-loading-text="Loading...">Calculate seeding</button>
+						</form>
+					</p>
+				</div>			  
+			</div>
+			<div class="mastfoot">
+				<div class="inner">
+					<p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+				</div>
+			</div>
 
         </div>
 
-      </div>
+    </div>
 
     </div>
 

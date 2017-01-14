@@ -1,4 +1,5 @@
 <?php
+	var_dump($_POST);/*
 	$tagListString = $_POST['tagList'];
 	$tagList = explode(" ", $tagListString);
 	//Get trueskill of each person and attach to person in array
@@ -16,4 +17,5 @@
 	//Get challonge link back
 
 	//Output seeded bracket and challonge link
+	*/
 ?>
