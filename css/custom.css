@@ -26,13 +26,6 @@ a:hover {
   margin-bottom: 3px;
 }
 
-.transp-button{
-  background-color: transparent;
-  color: #fff;
-  font-family: Helvetica;
-  font-weight: 300;
-}
-
 label{
   display: block;
 }

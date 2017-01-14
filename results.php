@@ -24,14 +24,7 @@
         <div class="cover-container">
           <div class="inner cover">
             <h1 class="cover-heading">Bracket Seedings</h1>
-            <p class="lead" id="description">Insert tags below separated by a space. Make sure names are typed as they appear on ocsmash.weebly.com.</p>
-            <p class="lead" id="databox">
-              <form action="results.php" method="post">
-                <textarea name="tagList" id="tagList" class="form-control"></textarea>
-                <br>
-                <button class="btn btn-lg btn-default transp-button" id="calc-button" data-loading-text="Loading...">Calculate seeding</button>
-              </form>
-            </p>
+            <?php include 'processing.php' ?>
           </div>
 
           <div class="mastfoot">
