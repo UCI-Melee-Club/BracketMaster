@@ -1,7 +1,6 @@
 <?php
-	include('challonge.class.php');
-	date_default_timezone_set('America/Los_Angeles');
-
+	//include('challonge.class.php');
+	//date_default_timezone_set('America/Los_Angeles');
 
 	$html = file_get_contents('http://ocsmash.weebly.com/the-ladder-current.html');
 	$dom = new DOMDocument;
@@ -11,32 +10,39 @@
 	$players =array();
 
 	for ($i = 6; $i < $items->length; $i = 4 + $i){
-		$name = (string)$items->item($i)->nodeValue;
+		$name = trim(strtolower((string)$items->item($i)->nodeValue));
 		$players[$name] = $items->item($i + 1)->nodeValue;
 	}
 
-	$tagListString = $_POST['tagList'];
+	$challongeName = $_POST['challongeName'];
+	$tagListString = strtolower($_POST['tagList']);
 	$tagList = explode(" ", $tagListString);
+
 	//Get trueskill of each person and attach to person in array
-	for($tagList as $i_tag){
-		$rankList[] = trueSkillRanking($i_tag);
+	$completedList = array();
+	foreach($tagList as $i_tag){
+		if(array_key_exists($i_tag, $players)){
+			$completedList[$i_tag] = $players[$i_tag];
+		}
+		else{
+			$completedList[$i_tag] = 0;
+		}
 	}
-	//Combine arrays.
-	$seedingList = array_combine($rankList, $tagList);
-
+	
 	//Sort by ranking
-	ksort($seedingList);
+	arsort($completedList);
 
+	
+	/*
 	//Send sorted list to challonge
 	$c = new ChallongeAPI(DpYyhqBBN7gJX0LFMx8kgggYh51IZkDUnnP8nJ2p);
 
-	$tournamentName = trim($_POST['tournamentName']); ///change this line for the post
-	$tourneyNum = $tournamentName[strlen(tournamentName)-1] . $tournamentName[strlen(tournamentName)-2];
+	$tourneyNum = $tournamentName[strlen($challongeName)-1] . $tournamentName[strlen($challongeName)-2];
 
 	$date = date('m/d/Y h:i:s a', time());
 
 	$params = array(
-  		"tournament[name]" => $tournamentName,//fix this line lol
+  		"tournament[name]" => $challongeName,//fix this line lol
   		"tournament[tournament_type]" => "double elimination",
   		"tournament[url]" => "ZsmashBi" . $tourneyNum,
   		"tournament[description]" => "Challonge api is pretty dope, also Alex and Bill are GOATS",
@@ -44,9 +50,6 @@
   	);
 	$tournament = $c->makeCall("tournaments", $params, "post");
 	$tournament = $c->createTournament($params);
-
-	//Get challonge link back
-
-	//Output seeded bracket and challonge link
 	*/
+
 ?>

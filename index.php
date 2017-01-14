@@ -31,7 +31,7 @@
 							<br>
 							<textarea name="tagList" id="tagList" class="form-control"></textarea>
 							<br>
-							<input type="submit" class="btn btn-lg btn-default transp-button" id="calc-button" data-loading-text="Loading...">Calculate seeding</button>
+							<input type="submit" class="btn btn-lg btn-default transp-button" id="calc-button" data-loading-text="Loading..."></button>
 						</form>
 					</p>
 				</div>			  
