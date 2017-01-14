@@ -16,11 +16,12 @@
 
 	$challongeName = $_POST['challongeName'];
 	$tagListString = strtolower($_POST['tagList']);
-	$tagList = explode(" ", $tagListString);
+	$tagList = explode(",", $tagListString);
 
 	//Get trueskill of each person and attach to person in array
 	$completedList = array();
 	foreach($tagList as $i_tag){
+		$i_tag = trim($i_tag);
 		if(array_key_exists($i_tag, $players)){
 			$completedList[$i_tag] = $players[$i_tag];
 		}
@@ -31,6 +32,7 @@
 	
 	//Sort by ranking
 	arsort($completedList);
+	var_dump($completedList);
 
 	
 	/*
